@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<link href="assets/style/style.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+		<div id="divOverlayPocetak" class="divOverlay">
+			<div id="sadrzajOverlayPocetak" class="sadrzajOverlay">
+				<h4>Izaberite nivo igre : </h4>
+				<ul id="lista">
+					<li class="tezinaIgre">JEDNOSTAVAN</li>
+					<li class="tezinaIgre">SREDNJI</li>
+					<li class="tezinaIgre">TEZI</li>
+				</ul>
+			</div>
+		</div>
+		<div id="sadrzaj">
+		<div id="mode">
+			
+		</div>
+		<div id="sat">
+			<h1 id="ispisSata" class="tekstBelo"></h1>
+			<h1 id="ispisRezultat" class="tekstBelo">Poeni : 0</h1>
+			<div class="ocisti"></div>
+		</div>
+			<div id="plej">
+				<div id="probaDiv">
+					<div id="ovajDiv">
+					</div>
+				</div>
+			</div>
+			<div id="igra">
+				
+			</div>
+		
+		
+		</div>
+		
+		<div id="divOverlay" class="divOverlay">
+			<div id="pocetak">
+				
+			</div>
+		  
+		    <div id="sadrzajOverlay" class="sadrzajOverlay">
+				<div id="pregled">
+					<div id="status">
+						
+					</div>
+					<div id="vreme" >
+						<div id="divNazivVreme"></div>
+						<div id="ceoProgresVreme">
+							<div id="divProgresVreme" class="sakrij">
+								<div id="divBarVreme">
+									<div id="divLabelVreme">0%</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="ocisti"></div>
+					</div>
+					<div id="poeni" >
+						<div id="divNazivPoeni"></div>
+						<div id="ceoProgresPoeni">
+							<div id="divProgresPoeni" class="sakrij">
+								<div id="divBarPoeni">
+									<div id="divLabelPoeni">0%</div>
+								</div>
+							</div>
+							<div class="ocisti"></div>
+						</div>
+					</div>
+					<div id="bonus" >
+						<div id="divNazivBonus"></div>
+						<div id="ceoProgresBonus">
+							<div id="divProgresBonus" class="sakrij">
+								<div id="divBarBonus">
+									<div id="divLabelBonus">0%</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="ocisti"></div>
+					</div>
+					<div id="glavniProgres">
+						<div id="divProgres" class="sakrij">
+						  <div id="divBar">
+							<div id="divLabel" class="klasaLabel">0%</div>
+						  </div>
+						</div>
+					</div>
+					<div id="kraj" class="sakrij">
+						<div id="konacniRezultat">
+						</div>
+						<div class="dugmici">
+							<input type="button" value="Prikazi rezultate i upisi se" id="upis"/>
+							<input type="button" value="Igraj ponovo" class="igrajPonovo"/>
+						</div>
+					</div>
+				</div>
+				<div id="prikazTabele" class="sakrij">
+					<table id="tabelaPoeni" >
+						<thead id="prikazHeada" align="center">
+							<tr>
+								<th class="hed">Korisnik</th>
+								<th class="hed">Vreme</th>
+								<th class="hed">Ostvareni poeni</th>
+								<th class="hed">Bonus poeni</th>
+								<th class="hed">Konacni rezultat</th>
+							</tr>
+						</thead>
+						<tbody id="prikazBodija">
+							
+						</tbody>
+						
+					</table>
+					<div class="dugmici">
+						<input type="button" id="unosPodataka" value="Unesi svoj rezultat" />
+						<input type="button" value="Igraj ponovo" class="igrajPonovo" />
+					</div>
+				</div>
+
+		</div>
+		</div>
+	
+		<script id="slika" type="text/template">
+			<img src={{src}} class="klasaSlika" onClick="kliknutoNaSliku({{vrednost}});">
+		</script>
+		
+		
+		<script id="tabelaPoeniBody" type="text/template">
+			
+				<tr>
+						<td class="tdPodaci">{{username}}</td>
+						<td class="tdPodaci">{{vreme}}</td>
+						<td class="tdPodaci">{{ostvareniPoeni}}</td>
+						<td class="tdPodaci">{{bonusPoeni}}</td>
+						<td class="tdPodaci">{{konacniRezultat}}</td>
+					
+				</tr>
+				
+		</script>
+		<script id="tabelaPoeniHead" type="text/template">
+			
+		</script>
+		<script type="text/javascript" src="assets/js/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="assets/js/skripta.js"></script> 
+		<script type="text/javascript" src="assets/js/igra.js"></script> 
+		
+	</body>
+</html>

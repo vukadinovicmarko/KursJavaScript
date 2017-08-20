@@ -1,0 +1,280 @@
+body
+{
+	background-image:url(../images/background03.png);
+	font-family:Verdana;
+}
+
+h1
+{
+	font-size:30px;
+	color:white;
+}
+#sadrzaj, #sadrzaj a
+{
+	width:1000px;
+	margin:80px auto;
+	text-decoration:none;
+	text-align:center;
+	padding:30px 20px 80px 20px;
+	border-radius:50px;
+	border-top:3px solid red;
+	box-shadow:0px -15px 20px black;
+	
+}
+#sadrzaj h1
+{
+	text-transform:uppercase;
+}
+
+#meni
+{
+	width:95%;
+	margin:50px auto;
+	padding:0px 20px 0px 20px;
+	background-image:url(../images/background05.png);
+	border-radius:50px 50px 50px 50px;
+}
+
+#meni ul{
+	height:49px;
+}
+
+
+
+#meni li{
+	display:block;
+	float:left;
+	cursor:pointer;
+	padding:15px 10px 15px 10px;
+	margin-left:15px;
+	color:white;
+	background-image:url(../images/background03.png);
+	box-shadow:0px 0px 15px black;
+}
+
+
+#tabela li
+{
+	display:block;
+	
+	cursor:pointer;
+	text-align:center;
+}
+#tabela li:hover
+{
+	color:red;
+}
+
+
+#divTabela,#divUnosKorisnika
+{
+	margin-top:10px;
+	padding:30px 20px 50px 20px;
+	text-align:center;
+	width:95%;
+	height:auto;
+	border:1px solid black;
+	background-image:url(../images/background05.png);
+	box-shadow:0px 10px 17px black;
+}
+
+#divTabela h1,#divUnosKorisnika h1
+{
+	color:black;
+	margin-top:0px;
+	font-size:24px;
+	padding-top:20px;
+	padding-bottom:20px;
+	box-shadow:0px 5px 7px black;
+	font-weight:normal;
+	background-color:rgba(140,140,80,0.2);
+	text-transform:uppercase;
+}
+
+.dugmici{
+	margin-top:50px;
+	height:30px;
+}
+
+.js_prikazi{
+	display:block;
+}
+.js_sakrij{
+	display:none;
+}
+#tabela
+{
+	margin-top:40px;
+	/* box-shadow:10px 0px 25px black; */
+	width:100%;
+	text-align:center;
+}
+
+
+#tabela th
+{
+	background-color:rgba(0,120,40,0.1);
+	padding-top:20px;
+	padding-bottom:20px;
+	font-size:12px;
+	
+	box-shadow:0px -2px 5px black; 
+	
+}
+
+
+#tabela td
+{
+	padding:20px 0px 20px 0px;
+	font-size:14px;
+	
+}
+
+#tabelaUnos
+{
+	padding:20px;
+	width:80%;
+	margin:0 auto;
+	text-align:center;
+}
+
+#tabelaUnos td
+{
+	/* border:1px solid red; */
+	padding-left:20px;
+	padding-right:20px;
+	width:50%;
+}
+
+#tabelaUnos th
+{
+	width:35%;
+	background-color:rgba(120,120,120,0.2);
+	box-shadow:2px 0px  3px black;
+	height:50px;
+	font-size:14px;
+}
+/* 
+#tabelaBody tr:nth-child(odd)
+{
+	background-color:rgba(120,20,40,0.2);
+}
+#tabelaBody tr:nth-child(even)
+{
+	background-color:rgba(40,120,20,0.2);
+}
+ */
+
+.neparniRedovi
+{
+	background-color:rgba(120,20,40,0.2);
+}
+.parniRedovi
+{
+	background-color:rgba(40,120,20,0.2);
+}
+ 
+.tdInput
+{
+	width:100%;
+	height:30px;
+	font-size:14px;
+	border:1px solid black;
+	background-color:rgba(250,250,250,0.9);
+}
+.ispisGreske,.js_ispisGreske, .js_greskeZeleno,.js_greskeCrveno{
+	display:none;
+	padding:20px;
+	
+}
+.js_ispisGreske, .js_greskeZeleno,.js_greskeCrveno
+{
+	margin-top:7px;
+	font-size:12px;
+	padding-top:5px;
+	padding-bottom:5px;
+	display:block;
+	box-shadow:-5px 0px 7px black;
+}
+.js_greskeZeleno
+{
+	
+	background-color:rgba(0,240,20,0.2);
+	
+}
+.js_greskeCrveno
+{
+	
+	background-color:rgba(250,0,0,0.5);
+}
+.js_neuspesnaValidacija
+{
+	width:100%;
+	height:30px;
+	
+	
+	border:1px solid red;
+}
+
+.js_uspesnaValidacija
+{
+	width:100%;
+	height:30px;
+	font-size:14px;
+	
+	background-color:rgba(250,250,250,1);
+	border:1px solid green;
+}
+
+
+#divPretraga
+{
+	width:95%;
+	background-image:url(../images/background05.png);
+	margin:0 auto;
+	
+}
+
+#rbPretraga
+{
+	padding-top:20px;
+	padding-left:50px;
+	width:40%;
+	float:right;
+	text-align:left;
+	box-shadow:-10px 0px 15px black;
+}
+
+#pretraga
+{
+	float:left;
+	width:35%;
+	height:30px;
+	margin:60px 0px 0px 100px;
+	box-shadow:0px 0px 3px black;
+	
+}
+
+.ocisti
+{
+	clear:both;
+}
+.sedamdesetpet
+{
+	width:50%;
+	text-align:right;
+	margin:0 auto;
+	border:1px solid black;
+}
+
+.sortirano
+{
+	background-color:rgba(20,20,20,0.1);
+	color:black;
+	
+}
+
+.aktivno
+{
+	background-color:green;
+}

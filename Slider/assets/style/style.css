@@ -1,0 +1,147 @@
+body
+{
+	background-image:url(../images/background05.png);
+	font-family:Verdana;
+}
+#sadrzaj
+{
+	/* display:none; */
+	width: 960px;
+	margin:0 auto;
+}
+#div_levo
+{
+	height: 80px;
+    width: 50px;
+    float: left;
+    margin-top: 200px;
+    /* border:1px solid black; */
+}
+
+#div_desno
+{
+	height: 80px;
+    width: 50px;
+    float: right;
+    margin-top:200px;
+	/* border:1px solid black; */
+	/* width:65px; */
+}
+
+.slikaDesno
+{
+	width: 57px;
+	height:85px;
+	margin-top:-3px;
+	margin-left:-5px;
+}
+#slider-okvir
+{
+	width:800px;
+	height:450px;
+	text-align:center;
+	overflow:hidden;
+	margin: 50px 0px 0px 27px;
+	box-shadow:0px 0px 15px black;
+	border-radius:25px;
+	border:5px solid white;
+	float: left;
+	
+}
+#thumb-okvir
+{
+	
+	position:relative;
+	width:800px;
+	margin:0 auto;
+	padding-top:20px;
+	padding-bottom:20px;
+	/* border:1px solid black; */
+	padding-left:2px;
+	padding-right:2px;
+	text-align:center;
+	display:none;
+	
+}
+.thumb
+{
+	position:relative;
+	
+	width:245px;
+	margin-left:5px; 
+	margin-right:5px; 
+	border:2px solid black;
+	margin-top:20px;
+	box-shadow:0px 0px 15px black;
+}
+#slider
+{
+	box-shadow:0px 0px 15px black;
+	width:9000px;
+	z-index:-1;
+	float:left;
+	height:450px;
+	margin:0px auto;
+	text-align:center;
+	/* box-shadow:0px 0px 45px black; */
+	position:relative;
+}
+
+.slika
+{
+	/* display:none; */
+	/* margin-right: 5px; */
+	margin-left:0px;
+    left: 0px;
+    position: relative;
+	float:left;
+	
+	/* box-shadow:0px 0px 55px black; */
+	
+}
+
+.opis
+{
+	position: relative;
+    float: left;
+    width: 800px;
+    z-index: 1;
+    margin-top: 335px;
+	margin-left: -800px;
+	
+}
+
+.opis h3
+{
+	width:100%;
+	box-shadow:0px -1px 2px white;
+	border-top:1px solid white;
+	padding-top:20px;
+	padding-bottom:15px;
+	color:white;
+	background-color:rgba(0,0,0,0.7);
+	margin:0 auto;
+	text-align:center;
+	display:none;
+}
+.opis p
+{
+	display:none;
+	width:100%;
+	padding-top:10px;
+	padding-bottom:30px;
+	color:white;
+	background-color:rgba(0,0,0,0.7);
+	margin:0 auto;
+	text-align:center;
+}
+
+.aktivno
+{
+	 border:2px solid rgba(255,0,0,1); 
+}
+
+.ocisti
+{
+	clear:both;
+}

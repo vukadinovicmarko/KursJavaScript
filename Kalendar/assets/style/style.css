@@ -1,0 +1,132 @@
+body
+{
+	background-image:url(../images/background03.png);
+	font-family:Verdana;
+}
+#sat
+{
+	width:50%;
+	margin:80px auto;
+	text-align:center;
+	
+}
+#prikazSata
+{
+	color:black;
+	background-image:url(../images/background05.png);
+	padding-top:1px;
+	padding-bottom:1px;
+	box-shadow:0px 0px 15px black;
+	border-radius:25px;
+}
+
+
+
+#izborFormata
+{
+	width:250px;
+	border:1px solid black;
+	margin:0px auto;
+	text-align:center;
+	
+	
+}
+
+#kalendar
+{
+	box-shadow:0px -2px 3px black;
+	width:700px;
+	border:1px solid black;
+	margin:0 auto;
+	background-image:url(../images/background05.png);
+	
+	text-align:center;
+}
+.danas{
+	font-weight:bold;
+	color:white;
+	border:1px solid gray;
+	color:rgba(230,20,20,0.9);
+}
+#mesec
+{
+	font-size:20px;
+	width:50%;
+	height:45px;
+	margin:0 auto;
+	padding-top:10px;
+	padding-bottom:10px;
+	text-align:center;
+	
+}
+
+#mesec h3{
+	
+	width:30%;
+	margin:10px auto;
+}
+
+.levo
+{
+	margin:15px auto;
+	float:left;
+	cursor:pointer;
+}
+
+.desno
+{
+	margin:-33px auto;
+	float:right;
+	cursor:pointer;
+}
+.ocisti{
+	clear:both;
+}
+#tempGodina
+{
+	width:500px;
+	margin:0 auto;
+	text-align:center;
+	border-radius:50px 50px 0px 0px;
+	padding-top:5px;
+	padding-bottom:5px;
+	font-weight:normal;
+	background-image:url(../images/background05.png);
+	
+}
+
+#divTabelaKalendar
+{
+	width:100%;
+	padding-top:0px;
+	text-align:center;
+	
+}
+
+#tabelaDani
+{
+	width:95%;
+	border:1px solid red;
+}
+
+#tabelaKalendar
+{
+	width:100%;
+	box-shadow:0px -2px 5px black;
+}
+
+#tabelaKalendar th
+{
+	height:50px;
+	width:14%;
+	background-color:rgba(0,180,140,0.4);
+	font-size:12px;
+}
+
+#tabelaKalendar td
+{
+	height:40px;
+	font-size:12px;
+	text-align:center;
+	background-color:rgba(180,120,20,0.3);
+}

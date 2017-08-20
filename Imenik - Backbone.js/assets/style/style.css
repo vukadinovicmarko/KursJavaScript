@@ -1,0 +1,81 @@
+body{
+	background-color:lightgray;
+	font-family:Verdana;
+}
+#sadrzaj{
+	width:1000px;
+	margin:0 auto;
+	border:1px solid black;
+	height:500px;
+	background:url(../images/background08.png);
+}
+#tableImenik
+{
+	font-size: 14px;
+    width: 80%;
+    margin: 30px auto;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+    overflow: hidden;
+    border: 5px solid #128689;
+    box-shadow: 0px 0px 30px black;
+}
+#tableImenik th{
+	border-bottom: 2px solid black;
+    background-color: #106365;
+    height: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    box-shadow: 0px 0px 50px black;
+    color: white;
+	cursor:pointer;
+    text-transform: uppercase;
+	
+}
+#tableImenik tr{
+	height: 30px;
+}
+#tableImenik tr td{
+	min-width: 65px;
+
+}
+.parno{
+	background-color:white;
+	color:#128689;
+}
+.neparno{
+	background-color:#128689;
+	color:white;
+
+}
+
+.parnoBorderi{
+	border-right: 1px solid #128689;
+}
+.neparnoBorderi{
+	border-right: 1px solid white;
+}
+#gore
+{
+	width:600px;
+	border:1px solid black;
+	margin:0 auto;
+}
+#divUnosKorisnika
+{
+	float:left;
+	width:50%;
+}
+#divPretraga
+{
+	width:45%;
+	float:right;
+	border-left:1px solid black;
+	text-align:center;
+	height:40px;
+	margin:0 auto;
+}
+.ocisti
+{
+	clear:both;
+}

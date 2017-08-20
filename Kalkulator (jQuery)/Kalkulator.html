@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/style/style.css"/>
+	</head>
+	<body>
+		<div id="sadrzaj">
+			<h2>Kalkulator</h2>
+			<div class="pregled">
+				<input type="text" disabled class="tbPregled" data-tbid="prvi"/>
+				<input type="text" disabled class="tbPregled" data-tbid="drugi"/>
+				<input type="text" disabled class="tbPregled" data-tbid="treci"/>
+			</div>
+			<div class="dugmici">
+				<table id="tabela">
+					<tr id="prviRed">
+						<td><input type="button" class="obicniDugmici" value="7"</td>
+						<td><input type="button" class="obicniDugmici" value="8"</td>
+						<td><input type="button" class="obicniDugmici" value="9"</td>
+						<td><input type="button" class="operacije" value="+"</td>
+					</tr>
+					<tr id="drugiRed">
+						<td><input type="button" class="obicniDugmici" value="4"</td>
+						<td><input type="button" class="obicniDugmici" value="5"</td>
+						<td><input type="button" class="obicniDugmici" value="6"</td>
+						<td><input type="button" class="operacije" value="-"</td>
+					</tr>
+					<tr id="treciRed">
+						<td><input type="button" class="obicniDugmici" value="1"</td>
+						<td><input type="button" class="obicniDugmici" value="2"</td>
+						<td><input type="button" class="obicniDugmici" value="3"</td>
+						<td><input type="button" class="operacije" value="*"</td>
+					</tr>
+					<tr id="cetvtiRed">
+						<td><input type="button" class="obicniDugmici" value="0"</td>
+						<td><input type="button" class="obicniDugmici" value="."</td>
+						<td><input type="button" class="dugmeCe" value="C"</td>
+						<td><input type="button" class="operacije" value="/"</td>
+					</tr>
+					<tr id="petiRed">
+						<td><input type="button" class="specijalneOperacije" 
+							value="sqrt(x)" data-specop="prvi" </td>
+						<td><input type="button" class="specijalneOperacije"
+							value="pow(2)" data-specop="drugi" </td>
+						<td><input type="button" class="specijalneOperacije" 
+							value="pow(3)" data-specop="treci"</td>
+						<td><input type="button" class="jednako" value="="</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	
+		
+		<script type="text/javascript" src="assets/js/jquery-3.1.0.js"></script>
+		<script type="text/javascript" src="assets/js/skripta.js"></script>
+		
+		
+	</body>
+</html>

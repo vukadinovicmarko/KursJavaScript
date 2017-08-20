@@ -1,0 +1,274 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+	</head>
+
+	<body>
+		<div id="sadrzaj">
+			<h1>Twitter parser</h1>
+			<table id="tabela">
+
+				<thead>
+					<th colspan="2" align="center">
+						Unesi tekst :
+					</th>
+				</thead>
+				<tr >
+					<td colspan="2" class="tdTextArea"><textarea rows="5" cols="65" width="100%" id="taUnosTeksta" ></textarea></td>
+					
+				</tr>
+				<tr class="tdTextArea" >
+					<td align="right" class="pedeset"><input type="button"  id="unesi" value="Unesi" onClick="parsujTekst();"/></td>
+					<td align="left"class="pedeset"><input type="button"  id="isprazni" value="Isprazni Tabelu" onClick="isprazniTabelu();"/></td>
+				</tr>
+
+			</table>
+
+			<table id="tabelaPrikaz">
+				<tr >
+					<th colspan="2" align="center">
+						Prikaz u Twitter formi
+					</th>
+				</tr>
+				<tr >
+					<td class="prikazTeksta"></td>
+				</tr>
+
+			</table>
+
+
+		</div>
+
+		<script language="JavaScript">
+	/*
+		Funkcija parsujTekst() sredjuje tekst iz inputa tako da kad god se ukuca @ pa neka rec, ona pretvori ta dva izraza u jedan link 
+		(razumeo sam da se u zadatku trazilo da se svuda stavi link www.twitter.com, pa sam tako uradio).
+		Funkcija proverava da li ima "@" na samom kraju stringa(ukoliko ima, ne pokazuje se, jer nema reči nakon "@"), a ako nema, nastavlja dalje da ispituje  da li ima karakter "@", kako bi ga zamenila slikom i linkom, i rec koja ide nakon toga pretvara u link.
+		Funkcija prikazuje/parsuje : 
+			
+			- karakter "#" na kraj teksta,
+			- kada se ukuca link sa "#" na pocetku celog teksta, link se spusta na kraj teksta,
+			- ne prikazuje link označen sa "#", ukoliko se link nalazi u tekstu,
+			- ne prikazuje više ukucanih "@" karaktera u nizu, 
+			- ne prikazuje ukucani "@" karakter bez reci nakon toga,
+			- ne prikazuje ukucani "@" karakter na kraju teksta,
+
+	*/
+			function parsujTekst()
+			{
+				document.getElementById("tabelaPrikaz").style=  "visibility:visible";
+
+		<!------------------------------------------------------------------------------------
+
+				// podešavanje početnih vrednosti za nove promenljive
+
+		<!------------------------------------------------------------------------------------
+
+				var tekst = document.getElementById("taUnosTeksta").value;
+				var tekst2 = tekst;
+				var duzinaTeksta = tekst.length;
+				var slika = "<a href='http:\\www.twitter.com' target='_blank'><img src='assets/images/twitter_logo.png' height='15' width='15' /></a>";
+				var pozicijaEta = 0,duzinaReci = 0, pozicijaTaraba = 0,krajLinka = 0,pozicijaDoKrajaLinka= 0,pozicijaNovogEta=0;
+				var preEta = "",rec = "", odEta = "", odEtaSplitovano = "",ostatak = "",sredjenOstatak = "",odTarabe = "", izrazOdTarabe="", hesTeg1="",hesTeg2="", tekstZaPrikaz="",sredjenHesTeg2="",linkSaTarabom="",levoLinkSaTarabom="",desnoLinkSaTarabom="",desnoLinkSaTarabomSredjeno="",prviLinkSaTarabom ="",ostatakDoTarabeTemp="";
+				var imaEtUEtu = false;
+				tekstZaPrikaz = "<p>";
+				var proba = "";
+				tekst.trim();
+
+		<!------------------------------------------------------------------------------------
+
+				// Funkcija pita da li u svom tekstu sadrži karakter "#"
+
+		<!------------------------------------------------------------------------------------
+
+				if(tekst.includes("#")){
+					for(var i = 0; i< duzinaTeksta; i++){
+						if(tekst[i] === "#"){
+							if(0 === i){
+								if(tekst.includes("-")){
+									linkSaTarabom = tekst.split("-");
+									levoLinkSaTarabom = linkSaTarabom[0] ;
+									duzinaLevogLinka = levoLinkSaTarabom.length;
+									if(typeof(linkSaTarabom[1]) === "undefined")
+									linkSaTarabom[1] = " ";
+									else{
+										desnoLinkSaTarabom =" - " + linkSaTarabom[1].trim();
+									}
+								}
+								else if(tekst.includes("\n")){
+									linkSaTarabom = tekst.split("\n");
+									levoLinkSaTarabom = linkSaTarabom[0];
+									levoLinkSaTarabom.trim();
+									duzinaLevogLinka = levoLinkSaTarabom.length;
+									if(typeof(linkSaTarabom[1]) === "undefined")
+										linkSaTarabom[1] = " ";
+									else{
+										desnoLinkSaTarabom = ""; 
+									}
+								}
+								else if(tekst.includes(" ")){
+									linkSaTarabom = tekst.split(" ");
+									levoLinkSaTarabom = linkSaTarabom[0];
+									duzinaLevogLinka = levoLinkSaTarabom.length;
+									if(typeof(linkSaTarabom[1]) === "undefined")
+										linkSaTarabom[1] = " ";
+									else{
+										desnoLinkSaTarabom = ""; 
+									}
+								}
+								desnoLinkSaTarabom.trim();
+								krajLinka = desnoLinkSaTarabom.indexOf("\n");
+
+								desnoLinkSaTarabomSredjeno = desnoLinkSaTarabom.slice(0,krajLinka); 
+								izrazOdTarabe += "<a href='http:\\www.twitter.com' target='_blank'><span style='color:blue;'>" + levoLinkSaTarabom  + desnoLinkSaTarabomSredjeno + "</span></a></br>";
+								pozicijaDoKrajaLinka = duzinaLevogLinka + krajLinka;
+								var ostatakDoTarabe = tekst.slice(pozicijaDoKrajaLinka,tekst.length);
+								tekst = ostatakDoTarabe;
+								duzinaTeksta = tekst.length;
+								i=-1;
+								continue;
+							}
+
+							odTarabe = tekst.slice(i,duzinaTeksta);
+							hesTeg1 = odTarabe.split("-");
+
+							if(typeof(hesTeg1[1]) === "undefined")
+								hesTeg1[1] = " ";
+							else{
+								hesTeg2 = hesTeg1[1].split("#");
+								sredjenHesTeg2 =" - " + hesTeg2[0];
+
+								if(sredjenHesTeg2===" ")
+									sredjenHesTeg2 =" - " + hesTeg1[1];
+							}
+
+							izrazOdTarabe += "<a href='http:\\www.twitter.com' target='_blank'><span style='color:blue;'>" + hesTeg1[0]  + sredjenHesTeg2 + "</span></a></br>";
+						}
+					}
+				}
+				
+		<!------------------------------------------------------------------------------------
+				
+				// Funkcija pita da li u svom tekstu sadrži karakter "@"
+				
+		<!------------------------------------------------------------------------------------
+		
+				if(tekst.includes("@")){
+					while(tekst.endsWith("@")){
+						tekst = tekst.slice(0,tekst.lastIndexOf("@"));
+					}
+					duzinaTeksta = tekst2.length;
+					tekst2 = tekst;
+					
+					for(var i = 0; i< duzinaTeksta; i++){
+						if((tekst2[i] === "@") && (tekst2[i+1]==="@")){
+								
+								proba += tekst2.slice(0, i);
+								tekst2 = tekst2.slice(i+1, duzinaTeksta);
+								i=-1;
+								duzinaTeksta = tekst2.length;
+						}
+					}
+					tekst = proba.trim();
+					duzinaTeksta = tekst2.length;
+					for(var i = 0; i< duzinaTeksta; i++){
+						if((tekst2.charAt(0) === "@") && (tekst2[i] === "@")){
+							if((tekst2[i+1] !== "@") && ((tekst2[i+1] === " ") || (tekst2[i+1] === "\t") || (tekst2[i+1] === "\n"))){
+								tekst2 = tekst2.slice(i+1, duzinaTeksta);
+								i=-1;
+								duzinaTeksta = tekst2.length;
+							}
+						}
+					}
+
+					tekst = tekst + tekst2;
+					duzinaTeksta = tekst.length;
+
+					if("#" === tekst.charAt(0)){
+
+						prviLinkSaTarabom = tekst.slice(0,pozicijaDoKrajaLinka);
+						tekst = tekst.slice(pozicijaDoKrajaLinka,duzinaTeksta);
+						tekst.trim();
+					}
+					duzinaTeksta = tekst.length;
+					doEta = tekst.slice(0,tekst.indexOf("@"));
+					tekstZaPrikaz += doEta;
+					for(var i = 0; i< duzinaTeksta; i++){
+						if("@" === tekst[i] ){
+							if(imaEtUEtu){
+								var privremeniDeoTeksta1 = tekst.slice(0,pozicijaNovogEta+1);
+								var privremeniDeoTeksta2 = tekst.slice(pozicijaNovogEta+1,duzinaTeksta);
+								tekst = privremeniDeoTeksta1 + " " + privremeniDeoTeksta2;
+								duzinaTeksta = tekst.length;
+								imaEtUEtu = false;
+								i=-1;
+								continue;
+							}
+
+							pozicijaEta = i+1;
+							odEta = tekst.slice(pozicijaEta,duzinaTeksta);
+							odEtaSplitovano = odEta.split(" ");
+							if(odEtaSplitovano[0].includes("#")){
+								var ostatakDoTarabe = odEtaSplitovano[0].split("#");
+								 odEtaSplitovano[0] = ostatakDoTarabe[0] ;
+							}
+							if(odEtaSplitovano[0].includes("@")){
+								pozicijaNovogEta = odEtaSplitovano[0].indexOf("@") + i;
+								imaEtUEtu = true; 
+								i=-1;
+								continue;
+							}
+							duzinaReci = odEtaSplitovano[0].length;
+							rec = "<a href='http:\\www.twitter.com' target='_blank'><span style='color:blue;'>" + odEtaSplitovano[0] + "</span></a>";
+							ostatak = tekst.slice(pozicijaEta + duzinaReci, duzinaTeksta);
+							sredjenOstatak = ostatak.split("@");
+							var lepoSredjenOstatak = sredjenOstatak[0];
+							if(lepoSredjenOstatak.includes("#")){
+								var ostatakDoTarabe = lepoSredjenOstatak.split("#");
+								 lepoSredjenOstatak = ostatakDoTarabe[0] ;
+							}
+							if(tekst[i+1]===" "){
+								tekstZaPrikaz+=lepoSredjenOstatak;
+								continue;
+							}
+							else
+								tekstZaPrikaz += slika + rec + lepoSredjenOstatak;
+						} 
+
+					}
+
+				tekstZaPrikaz += "</p>";
+
+				document.getElementsByClassName("prikazTeksta")[0].innerHTML +=  tekstZaPrikaz + izrazOdTarabe + "</br><hr style='color:red'></hr>";
+
+				}
+				else{
+					if(tekst.includes("#")){
+
+						if("#" === tekst.charAt(0)){
+
+						}
+						else{
+							var ostatakDoTarabe = tekst.split("#");
+							tekst = ostatakDoTarabe[0] ;
+						}
+					}
+					tekstZaPrikaz += tekst + "</p>";
+					document.getElementsByClassName("prikazTeksta")[0].innerHTML +=  tekstZaPrikaz + izrazOdTarabe + "</br><hr style='color:red'></hr>";
+				}
+
+			}
+
+		<!------------------------------------------------------------------------------------
+
+				// Funkcija isprazniTabelu() prazni tabelu i sakriva je
+
+		<!------------------------------------------------------------------------------------
+		
+			function isprazniTabelu(){
+				document.getElementsByClassName("prikazTeksta")[0].innerHTML =  "";
+				document.getElementById("tabelaPrikaz").style= "visibility:hidden";
+			}
+			</script>
+	</body>
+</html>

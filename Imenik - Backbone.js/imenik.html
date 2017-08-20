@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="assets/style/style.css"/>
+	</head>
+	<body>
+		<div id="gore">
+			<div id="divUnosKorisnika"></div>
+			<div id="divPretraga"></div>
+			<div class="ocisti"></div>
+		</div>
+		<div id="sadrzaj"></div>
+
+
+		<script language="JavaScript" src="assets/js/jquery-3.1.0.min.js"></script>
+		<script type="text/javascript" src="http://underscorejs.org/underscore.js"></script>
+		<script type="text/javascript" src="http://backbonejs.org/backbone.js"></script>
+		<script language="JavaScript" src="assets/js/script.js"></script>
+
+		<script type="text/template" id="template_table">
+			<table id="tableImenik" border="0" cellspacing="0">
+				<tHead>
+					<tr>
+						<th data-sortiraj-po = "ime">Ime</th>
+						<th data-sortiraj-po = "prezime">Prezime</th>
+						<th data-sortiraj-po = "adresa">Adresa</th>
+						<th data-sortiraj-po = "brojKucnog">Broj kucnog telefona</th>
+						<th data-sortiraj-po = "brojMobilnog">Broj mobilnog telefona</th>
+					</tr>
+				</tHead>
+				<tBody border="0" >
+					<% _.each(collection,function(zapis){ %>
+						<tr >
+							<td><%= zapis.ime %></td>
+							<td><%= zapis.prezime %></td>
+							<td><%= zapis.adresa %></td>
+							<td><%= zapis.brojKucnog %></td>
+							<td><%= zapis.brojMobilnog %></td>
+						</tr>
+					<% });  %>
+				</tBody>
+			</table>
+		</script>
+		<script>
+
+		</script>
+	</body>
+</html>

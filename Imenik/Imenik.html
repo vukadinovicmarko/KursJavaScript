@@ -1,0 +1,182 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
+		<script src="https://use.fontawesome.com/38e6e234f6.js"></script>
+	</head>
+
+	<body onLoad="prikaziTabelu();">
+		<div id="sadrzaj">
+			<h1>Imenik</h1>
+
+			<div id="meni">
+				<ul>
+					<li value="1" onClick="meni(this.value);">Pocetna</li>
+					<li value="2" onClick="meni(this.value);">Unos Korisnika</li>
+					<li value="3" onClick="meni(this.value);">Pretraga</li>
+				</ul>
+			</div>
+
+			<div id="divPretraga">
+				<input type="text" id="pretraga" onKeyUp="pretraga(this.value);"/>
+				<div id="rbPretraga">
+					<input type="radio" name="pretragaPo" class="rbPretraga" value="1">
+						Ime
+					</input></br>
+					<input type="radio" name="pretragaPo" class="rbPretraga" value="2">
+						Prezime
+					</input></br>
+					<input type="radio" name="pretragaPo" class="rbPretraga" value="3">
+						Adresa
+					</input></br>
+					<input type="radio" name="pretragaPo" class="rbPretraga" value="4">
+						Broj kucnog telefona
+					</input></br>
+					<input type="radio" name="pretragaPo" class="rbPretraga" value="5">
+						Broj mobilnog telefona
+					</input></br></br>
+				</div>
+			<div class="ocisti"></div>				
+			</div>	
+
+			<div id="divTabela">
+				<h1>Prikaz Imenika</h1>
+
+				<table id="tabela">
+					<thead>
+						<th id="thImeGlavnaTabela">
+							<li value="1" onClick="sortiraj(this.value);">
+								Ime
+							</li>
+						</th>
+						<th id="thPrezimeGlavnaTabela">
+							<li value="2" onClick="sortiraj(this.value);">
+								Prezime
+							</li>
+						</th>
+						<th align="center" id="thAdresaGlavnaTabela">
+							<li value="3" onClick="sortiraj(this.value);">
+								Adresa
+							</li>
+						</th>
+						<th align="center" id="thKucniBrojGlavnaTabela">
+							<li value="4" onClick="sortiraj(this.value);">
+								Broj kucnog telefona
+							</li>
+						</th>
+						<th align="center" id="thMobilniBrojGlavnaTabela">
+							<li value="5" onClick="sortiraj(this.value);">
+								Broj mobilnog telefona
+							</li>
+						</th>
+					</thead>
+					<tbody id="tabelaBody">
+					</tbody>
+				</table>
+
+				<div class="ocisti"></div>
+			</div>
+			<div class="ocisti"></div>
+			<div id="divUnosKorisnika">
+				<h1>Unos novog korisnika</h1>
+				<form id="forma" onSubmit="proveraUnosa();">
+					<table id="tabelaUnos" >
+						<tr id="trIme" >
+							<th align="center" id="thIme" >
+								Ime
+							</th>
+							<td align="center" id="tdIme" >
+								<input type="text" id="tbIme" class="tdInput" 
+								onblur="proveriIme(this.value);" 
+								onKeyUp="proveriIme(this.value);" />
+							</td>
+
+		<!--	linija koda ispod komentara : (style="width:200px;")
+				nisam znao kako drugačije, pošto nikako drugačije nije moglo da radi,
+				a da ne koristim javascript(getelemementbyclassname().style).
+				Svakom td tagu sa klasom "ispisGreske" dodelio sam (style="width:200px;").
+		-->
+							<td align="center" id="tdImeGreske" class="ispisGreske" 
+							style="width:200px;"> 
+
+							</td>
+						</tr>
+						<tr id="trPrezime">
+							<th align="center" >
+								Prezime
+							</th>
+							<td align="center" id="tdPrezime" >
+								<input type="text" id="tbPrezime" class="tdInput" 
+								onblur="proveriPrezime(this.value);" 
+								onKeyUp="proveriPrezime(this.value);"/>
+							</td>
+							<td align="center" id="tdPrezimeGreske" class="ispisGreske" 
+							style="width:200px;">
+
+							</td>
+						</tr>
+						<tr id="trAdresa">
+							<th align="center" >
+								Adresa
+							</th>
+							<td align="center"  >
+								<input type="text" id="tbAdresa" class="tdInput" 
+								onblur="proveriAdresu(this.value);" 
+								onKeyUp="proveriAdresu(this.value);"/>
+							</td>
+							<td align="center"  id="tdAdresaGreske" class="ispisGreske" 
+							style="width:200px;">
+
+							</td>
+						</tr>
+						<tr id="trBrojKucnog">
+							<th align="center"  >
+								Broj kucnog telefona
+							</th>
+							<td align="center"  >
+								<input type="text" id="tbKucniTel" 
+								class="tdInput" 
+								onblur="proveriKucniBroj(this.value);" 
+								onKeyUp="proveriKucniBroj(this.value);" />
+							</td>
+							<td align="center"  id="tdBrojKucnogGreske" class="ispisGreske" 
+							style="width:200px;">
+
+							</td>
+						</tr>
+
+						<tr id="trBrojMobilnog">
+							<th align="center"  id="thMobTel">
+								Broj mobilnog telefona
+							</th>
+							<td align="center"  >
+								<input type="text" id="tbMobilniTel" 
+								class="tdInput" 
+								onblur="proveriMobTel(this.value);" 
+								onKeyUp="proveriMobTel(this.value);" />
+							</td>
+							<td align="center"  id="tdBrojMobilnogGreske"  
+							class="ispisGreske" style="width:200px;">
+								s
+							</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td  align="center" ><input type="submit" class="dugmici" 
+							value="Unesi korisnika" >
+							<input type="button" class="dugmici" value="Otkazi" 
+							onclick="otkazi();"></td>
+							<td></td>
+						</tr>
+					</table>
+				</form>
+				<div class="ocisti"></div>
+			</div>
+
+		</div>
+		<script language="JavaScript" src="assets/js/skripta.js"></script>
+		<script language="JavaScript" src="assets/js/unosKorisnika.js"></script>
+		<script language="JavaScript" src="assets/js/sortiranje.js"></script>
+		<script language="JavaScript" src="assets/js/pretraga.js"></script>
+
+	</body>
+</html>

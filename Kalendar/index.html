@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<link href="assets/style/style.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body onload="kalendar();">
+		<div id="sat">
+			<div id="prikazSata">
+			</div>
+			<select id="izborFormata" onChange="datumIVreme(this.value);">
+	<!--
+		Razumeo sam da sam mogao da definisem proizvoljne formate za datum
+		pa sam  definisao JavaScript input formate koji se kucaju da bi
+		se dobio odgovarajuci datum.
+	-->
+				<option value="0" >Izaberite JavaScript input format...</option>
+				<option value="1">ISO Date</option>
+				<option value="2">Short Date</option>
+				<option value="3">Long Date</option>
+				<option value="4">Full Date</option>
+			</select>
+		</div>
+		
+		<h2 id="tempGodina"></h2>
+		<div id="kalendar">
+			<div id="mesec">
+				<i class="fa fa-chevron-circle-left levo" aria-hidden="true"
+				onclick="prikaziKalendarLevo();"></i>
+				<h3 id="imeMeseca"></h3>
+				<i class="fa fa-chevron-circle-right desno" aria-hidden="true"
+				onclick="prikaziKalendarDesno();"/></i>
+				<div class="ocisti"></div>
+			</div>
+			<div id="divTabelaKalendar">
+				<table id="tabelaKalendar">
+					<thead id="daniUNedelji">
+					</thead>
+				
+					<tbody id="tabelaDani">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<script type="text/javascript" src="assets/js/sat.js"></script>
+		<script src="https://use.fontawesome.com/38e6e234f6.js"></script>
+		
+	</body>
+</html>

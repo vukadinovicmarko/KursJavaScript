@@ -1,0 +1,876 @@
+<html>
+	<head>
+				
+	</head>
+	<body onload="izgled();">
+		<div id="kalkulator">
+			<h2>KALKULATOR</h2>
+			<table id="labeliKalkulator" class="tabela">
+				
+				<tr>
+					<td><input type="text" disabled  id="labelSve" class="labeli"/></td>
+				</tr>                                                   
+				<tr>                                                    
+					<td><input type="text" disabled  id="labelSrednji"	class="labeli"/></td>
+				</tr>
+				<tr>                                                    
+					<td><input type="text" disabled  id="labelTrenutno"	class="labeli"/></td>
+				</tr>
+				
+			</table>
+			<table id="ostaloKalkulator" class="tabela">
+				
+			</table>
+		</div>
+		<script language="JavaScript">
+		
+			//---------------------------------------------------------------
+			
+			
+			function izgled()
+			{
+				
+				var klasaDivKalkulator = " font-family:Verdana; border-top:7px solid red; box-shadow:0px -20px 100px black; color:white; border-radius:55px 55px 0px 0px; width:500px; text-align:center; padding-top:15px;  margin:60px auto;background-image:url(images/background03.png);"
+				var klasaTabelaKalkulator = "font-family:Verdana; box-shadow:0px -15px 30px black; background-image:url(images/background05.png); padding:20px 0px 50px 0px; width:100%; margin:5px auto;text-align:center;" ;
+				var klasaBody = "font-family:Verdana; background-image:url(images/background03.png); margin:0 auto;";
+				var klasaDugmiciBrojevi = "font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(20,120,220,0.2);  width:65px; padding:15px 15px; font-size:14px; font-weight:bold; ";
+				var klasaDugmiciOstalo = "font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(120,20,20,0.4); width:65px;  padding:15px 0px; font-size:14px;";
+				var klasaTabelaKalkulatorLabel = "font-family:Verdana; width:100%;   height:50px ; background-color:rgba(225,225,250,0.6); color:black; border:1px solid black; padding:5px;margin-top:10px;  text-align:right; font-size:22px";
+				var klasaDugmiciOperacije = "font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(255,20,20,0.4); color:black; width:65px;  padding:15px 0px; font-size:14px; font-weight:bold;";
+				var klasaDugmeJednako = "font-family:Verdana; box-shadow:0px 2px 4px black; background-color:rgba(0,255,0,0.3); color:black; width:65px;  padding:15px 0px; font-size:14px;   font-weight:bold;";
+				var klasaDugmeTacka = " font-weight:bold; font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(20,20,20,0.2); width:65px;  padding:15px 0px; font-size:14px;  ";
+				var klasaDugmeCe = " font-weight:bold; font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(20,20,20,0.1); width:65px;  padding:15px 0px; font-size:14px;  ";
+				
+				document.body.style.cssText=klasaBody;
+				document.getElementById("kalkulator").style.cssText=klasaDivKalkulator;
+				var tabele = document.getElementsByClassName("tabela");
+				for (i = 0; i < tabele.length; i++) {
+					tabele[i].style.cssText=klasaTabelaKalkulator;
+				}
+				
+				
+				
+				var labeli = document.getElementsByClassName("labeli");
+				for (i = 0; i < labeli.length; i++) {
+					labeli[i].style.cssText=klasaTabelaKalkulatorLabel;
+				}
+				document.getElementById("labelTrenutno").style.color="black";
+				
+				//document.getElementById("labelSve").value=0;
+				document.getElementById("labelTrenutno").value=0;
+				document.getElementById("labelSrednji").style.visibility="hidden";
+				document.getElementById("labelSve").style.visibility="hidden";
+				document.getElementById("labelTrenutno").style.visibility="visible";
+				
+				
+				
+				var nizBrojeva = new Array();
+				
+				for (var i=1; i<=9; i++)
+				{
+					nizBrojeva.push(i);
+				}
+				
+				
+				nizBrojeva.reverse();
+				nizBrojevaSredjeno = nizBrojeva.slice(0,nizBrojeva.length,",");
+				
+				var prviRed = nizBrojevaSredjeno.slice(0,3);
+				var drugiRed = nizBrojevaSredjeno.slice(3,6);
+				var treciRed = nizBrojevaSredjeno.slice(6,9);
+				
+				
+				prviRed.reverse();
+				drugiRed.reverse();
+				treciRed.reverse();
+				var nizDugmica = "";
+				nizDugmica += ("<tr>");
+				for(var i=0; i< prviRed.length;i++)
+				{
+					nizDugmica += ("<td><input type='button' value='" + prviRed[i] + "' class='dugmiciBrojevi' onClick='Kliknuto(this.value)'></td>")
+				}
+				nizDugmica += ("<td><input type='button' value='+' class='dugmiciOperacije' onClick='KliknutoZnak(this.value)'></td>");
+				nizDugmica += ("</tr><tr>");
+				
+				for(var i=0; i< drugiRed.length;i++)
+				{
+					nizDugmica += ("<td ><input type='button' value='" + drugiRed[i] + "' class='dugmiciBrojevi' onClick='Kliknuto(this.value)' ></td>");
+				}
+				nizDugmica += ("<td><input type='button' value='-' class='dugmiciOperacije' onClick='KliknutoZnak(this.value)'></td>");
+				nizDugmica += ("</tr><tr>");
+				
+				for(var i=0; i< treciRed.length;i++)
+				{
+					nizDugmica += ("<td><input type='button' value='" + treciRed[i] + "' class='dugmiciBrojevi' onClick='Kliknuto(this.value)'></td>");
+				}
+				nizDugmica += ("<td><input type='button' value='x' class='dugmiciOperacije' onClick='KliknutoZnak(this.value)'></td>");
+				nizDugmica += ("</tr><tr >");
+				
+				nizDugmica += ("<td ><input type='button' value='0' class='dugmiciBrojevi' onClick='Kliknuto(this.value)'></td></h1>");
+				nizDugmica += ("<td ><input type='button' value='.' class='dugmeTacka' onClick='Kliknuto(this.value)'></td></h1>");
+				nizDugmica += ("<td ><input type='button' value='C' class='dugmeCe' onClick='KliknutoZnak(this.value)'></td></h1>");
+				nizDugmica += ("<td ><input type='button' value='/' class='dugmiciOperacije' onClick='KliknutoZnak(this.value)'></td></h1>");
+				nizDugmica += ("</tr><tr >");
+				nizDugmica += ("<td ><input type='button' value='sqrt(x)' class='dugmici' onClick='KliknutoKoren()'></td></h1>");
+				nizDugmica += ("<td ><input type='button' value='pow(2)' class='dugmici' onClick='KliknutoKvadrat()'></td></h1>");
+				nizDugmica += ("<td ><input type='button' value='pow(3)' class='dugmici' onClick='KliknutoKub(this.value)'></td></h1>");
+				nizDugmica += ("<td ><input type='button' value='=' class='jednako' onClick='KliknkutoIzracunaj()'></td></h1>");
+				nizDugmica += ("</tr>");
+				document.getElementById("ostaloKalkulator").innerHTML=nizDugmica;
+				
+				var dugmad= document.getElementsByClassName("dugmiciBrojevi");
+				for (i = 0; i < dugmad.length; i++) {
+					dugmad[i].style.cssText=klasaDugmiciBrojevi;
+				}
+				
+				var dugmadOstalo= document.getElementsByClassName("dugmici");
+				for (i = 0; i < dugmadOstalo.length; i++) {
+					dugmadOstalo[i].style.cssText=klasaDugmiciOstalo;
+				}
+				
+				var dugmeJednako = document.getElementsByClassName("jednako");
+				for (i = 0; i < dugmeJednako.length; i++) {
+					dugmeJednako[i].style.cssText=klasaDugmeJednako;
+				}
+				
+				var dugmiciOperacije = document.getElementsByClassName("dugmiciOperacije");
+				for (i = 0; i < dugmiciOperacije.length; i++) {
+					dugmiciOperacije[i].style.cssText=klasaDugmiciOperacije;
+				}
+				var dugmeTacka = document.getElementsByClassName("dugmeTacka");
+				for (i = 0; i < dugmeTacka.length; i++) {
+					dugmeTacka[i].style.cssText=klasaDugmeTacka;
+				}
+				var dugmeCe = document.getElementsByClassName("dugmeCe");
+				for (i = 0; i < dugmeCe.length; i++) {
+					dugmeCe[i].style.cssText=klasaDugmeCe;
+				}
+				
+			}
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			var preUpisivanja = true;
+			var nizZaLabel = new Array();
+			var rezultat = 0;
+			var daLiJeIzracunatoMalopre = false;
+			var daLiJeUkucanaTackaMalopre = false;
+			var poslednjeUneto = "";
+			
+			//---------------------------------------------------------------
+			
+			function Kliknuto(broj)
+			{
+				document.getElementById("labelTrenutno").style.backgroundColor="rgba(250,240,240,0.8)";
+				var vrednostLabelaTrenutno = document.getElementById("labelTrenutno").value;
+				
+				if(preUpisivanja)
+				{
+					nizZaLabel = new Array();
+					rezultat = 0;
+					document.getElementById("labelTrenutno").value = "";
+					
+					preUpisivanja = false;
+				}
+				if(broj === "0")
+				{
+					if(vrednostLabelaTrenutno === "0")
+					{
+						document.getElementById("labelTrenutno").value = 0;
+						preUpisivanja = true;
+						return;
+					}
+				}
+				
+				
+				
+				
+				
+				
+				if(daLiJeIzracunatoMalopre)
+				{
+					
+					document.getElementById("labelTrenutno").style.backgroundColor="rgba(0,255,0,0.3)";
+					return;
+				}
+				
+				if(broj === ".")
+				{
+					var postojiTacka = vrednostLabelaTrenutno.indexOf(".");
+					
+					if(postojiTacka == -1)
+					{
+						document.getElementById("labelTrenutno").value+=broj;
+						daLiJeUkucanaTackaMalopre = true;
+					}
+					else
+					{
+						return;
+					}
+					
+					
+					
+					
+				}
+				else
+				{
+					var postojiTacka = vrednostLabelaTrenutno.indexOf(".");
+					document.getElementById("labelTrenutno").value+=broj;
+					daLiJeUkucanaTackaMalopre = false;
+				}
+				
+			}
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			function Jednako(jednakoZnak)
+			{
+				return jednakoZnak = "=";
+			}
+			var staroLabelSve = document.getElementById("labelSrednji").value;
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			
+			function KliknutoZnak(znak)
+			{
+				daLiJeIzracunatoMalopre = false;
+				
+				document.getElementById("labelTrenutno").style.backgroundColor="rgba(250,240,240,0.8)";
+				document.getElementById("labelSrednji").style.backgroundColor="rgba(225,20,20,0.3)";
+				document.getElementById("labelSrednji").style.visibility="visible";
+				document.getElementById("labelSve").style.visibility="hidden";
+				var klasaDugmiciBrojevi = "font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(20,120,220,0.2);  width:65px; padding:15px 15px; font-size:14px; font-weight:bold; ";
+					var dugmad= document.getElementsByClassName("dugmiciBrojevi");
+					for (i = 0; i < dugmad.length; i++) {
+						dugmad[i].style.cssText=klasaDugmiciBrojevi;
+						
+					}
+				var klasaDugmeTacka = " font-weight:bold; font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(20,20,20,0.2); width:65px;  padding:15px 0px; font-size:14px;  ";
+				var dugmeTacka = document.getElementsByClassName("dugmeTacka");
+				for (i = 0; i < dugmeTacka.length; i++) {
+					dugmeTacka[i].style.cssText=klasaDugmeTacka;
+				}
+				var klasaDugmeJednako = "font-family:Verdana; box-shadow:0px 2px 4px black; background-color:rgba(0,255,0,0.3); color:black; width:65px;  padding:15px 0px; font-size:14px;   font-weight:bold;";
+				var dugmeJednako = document.getElementsByClassName("jednako");
+				for (i = 0; i < dugmeJednako.length; i++) {
+					dugmeJednako[i].style.cssText=klasaDugmeJednako;
+				}
+				
+				
+				var staro = document.getElementById("labelTrenutno").value;
+				var staroSrednjiLabel = document.getElementById("labelSrednji").value;
+				
+				if(proveriZnakove(znak.trim()))
+				{
+					
+					return;
+				}
+			
+				
+			
+				if(preUpisivanja)
+				{
+					rezultat=0;
+					document.getElementById("labelSrednji").value = "";
+					document.getElementById("labelTrenutno").value = "";
+					
+					preUpisivanja = false;
+				}
+				
+				if(znak === "C")
+				{
+					rezultat = 0;
+					nizZaLabel = new Array();
+					document.getElementById("labelTrenutno").value = 0;
+					document.getElementById("labelSrednji").value = 0;
+					document.getElementById("labelSve").value = 0;
+					document.getElementById("labelTrenutno").style.backgroundColor="rgba(225,225,250,0.6)";
+					document.getElementById("labelSrednji").style.backgroundColor="rgba(225,225,250,0.6)";
+					document.getElementById("labelSve").style.backgroundColor="rgba(225,225,250,0.6)";
+					document.getElementById("labelSrednji").style.visibility="hidden";
+					document.getElementById("labelSve").style.visibility="hidden";
+					document.getElementById("labelTrenutno").style.visibility="visible";
+					preUpisivanja = true;
+					
+				}
+				
+				if(staroSrednjiLabel != "" && staroSrednjiLabel !== 0)
+				{
+					
+					if(rezultat != 0)
+					{
+						
+						var probaNiz = new Array();
+						
+						probaNiz = staro.split(" ");
+						
+						var jednako = probaNiz.find(Jednako);
+						
+						if(jednako == "=")
+						{
+							
+							probaNiz.shift();
+							
+						
+							nizZaLabel = rezultat;
+							
+							document.getElementById("labelSrednji").value=nizZaLabel;
+						}
+						
+						else
+						{
+							
+							if(staro != znak)
+							{
+							
+							document.getElementById("labelSrednji").value=nizZaLabel;
+							document.getElementById("labelTrenutno").value=znak + " ";
+								return;
+							}
+							
+							
+						}
+					}
+					else if(znak != "C")
+					{
+						
+						
+						if(proveriDaliJeZnak(staro))
+							document.getElementById("labelTrenutno").value = znak + " ";
+						
+						else
+						{
+							var sredina = document.getElementById("labelSrednji").value;
+							var dole = document.getElementById("labelTrenutno").value;
+							if((sredina != 0 ) && (sredina != "") && (dole != 0 ) && (dole != "") )
+								document.getElementById("labelTrenutno").value = znak + " ";
+							
+							else
+							{
+								document.getElementById("labelSrednji").value=staro;
+								document.getElementById("labelTrenutno").value = znak + " ";
+							}
+							
+						}
+						
+						return;
+					}
+					
+					
+					
+				}
+				else
+				{
+					if(rezultat != 0)
+					{
+						
+						var probaNiz = new Array();
+						
+						probaNiz = staro.split(" ");
+						
+						var jednako = probaNiz.find(Jednako);
+						
+						if(jednako == "=")
+						{
+							
+							probaNiz.shift();
+							
+						
+							nizZaLabel = rezultat;
+							
+							document.getElementById("labelSrednji").value=nizZaLabel;
+						}
+						
+						else
+						{
+							alert("aaa");
+							if(staro != znak)
+							{
+							
+							document.getElementById("labelSrednji").value=nizZaLabel;
+							document.getElementById("labelTrenutno").value=znak + " ";
+							return;
+							}
+							
+							
+						}
+					}
+
+					if(znak != "C")
+					{
+						
+						
+						
+						document.getElementById("labelSrednji").value = staro;
+						document.getElementById("labelTrenutno").value = znak + " ";
+						return;
+					}
+				}
+				
+				
+				
+				
+				
+				
+				
+				switch(znak)
+				{
+					case "+":
+						document.getElementById("labelTrenutno").value=znak + " ";
+						break;
+					
+					case "-":
+						document.getElementById("labelTrenutno").value=znak + " ";
+						break;
+					
+					case "/":
+						document.getElementById("labelTrenutno").value=znak + " ";
+						break;
+					
+					case "x":
+						document.getElementById("labelTrenutno").value=znak + " ";
+						break;
+				}
+				
+				
+				
+			}
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			function proveriDaliJeZnak(staro)
+			{
+				
+				switch(staro.trim())
+				{
+					
+					case "+":
+					case "-":
+					case "/":
+					case "x":
+					
+					
+						return true;
+					default:
+						return false;
+					
+				
+				}
+			}
+			
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			
+			function proveriZnakove(znak)
+			{
+			
+				
+				var label = document.getElementById("labelTrenutno").value;
+				
+				if(znak == label.trim())
+				{
+					
+					return true;
+				}
+				else
+				{
+					
+					return false;
+				}
+			}
+			
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			
+			
+			function KliknkutoIzracunaj()
+			{
+				var sredina =  document.getElementById("labelSrednji").value;
+				var staro = document.getElementById("labelTrenutno").value;
+				
+				
+				
+				if(proveriDaliJeZnak(staro))
+				{
+					
+					return;
+				}
+				
+				if((staro == 0) && (sredina == 0))
+				{
+					
+					return;
+				}
+				
+				if(daLiJeIzracunatoMalopre)
+				{
+					
+					return;
+				}
+				else
+				{
+					
+					document.getElementById("labelSve").style.visibility="hidden";
+					if(rezultat != 0)
+					{
+						nizZaLabel = rezultat;
+					}
+					else
+						nizZaLabel = sredina;
+					
+					
+					
+					
+					
+					
+					var znak = staro.slice(0,1);
+					
+					var drugiBroj = "";
+					drugiBroj += staro.slice(1,staro.length);
+					
+					if(drugiBroj == "")
+					{
+						drugiBroj = staro;
+					}
+					switch(znak.trim())
+					{
+						case "+":
+							rezultat = parseFloat(nizZaLabel) + parseFloat(drugiBroj);
+						break;
+						
+						case "-":
+							rezultat = parseFloat(nizZaLabel) - parseFloat(drugiBroj);
+						break;
+						
+						case "/":
+							
+							rezultat = parseFloat(nizZaLabel) / parseFloat(drugiBroj);
+						break;
+						
+						case "x":
+							rezultat = parseFloat(nizZaLabel) * parseFloat(drugiBroj);
+						break;
+						
+						default:
+							rezultat = staro;
+						
+						
+					}
+					
+					document.getElementById("labelSrednji").value = nizZaLabel+" " + staro;
+					document.getElementById("labelTrenutno").value = "= " + parseFloat(rezultat);
+					document.getElementById("labelTrenutno").style.backgroundColor="rgba(0,255,0,0.3)";
+					document.getElementById("labelSrednji").style.backgroundColor="rgba(225,20,20,0.3)";
+					document.getElementById("labelSve").style.backgroundColor="rgba(20,120,220,0.2)";
+					
+					var klasaDugmiciBrojevi = "font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(240,240,240,0.2);  width:65px; padding:15px 15px; font-size:14px; font-weight:bold; ";
+					var dugmad= document.getElementsByClassName("dugmiciBrojevi");
+					for (i = 0; i < dugmad.length; i++) {
+						dugmad[i].style.cssText=klasaDugmiciBrojevi;
+						
+					}
+					var klasaDugmeTacka = " font-weight:bold; font-family:Verdana; box-shadow:0px 1px 2px black; background-color:rgba(240,240,240,0.2); width:65px;  padding:15px 0px; font-size:14px;  ";
+					var dugmeTacka = document.getElementsByClassName("dugmeTacka");
+					for (i = 0; i < dugmeTacka.length; i++) {
+						dugmeTacka[i].style.cssText=klasaDugmeTacka;
+					}
+					var klasaDugmeJednako = "font-family:Verdana; box-shadow:0px 2px 4px black; background-color:rgba(240,240,240,0.2); color:black; width:65px;  padding:15px 0px; font-size:14px;   font-weight:bold;";
+					var dugmeJednako = document.getElementsByClassName("jednako");
+					for (i = 0; i < dugmeJednako.length; i++) {
+						dugmeJednako[i].style.cssText=klasaDugmeJednako;
+					}
+					
+					daLiJeIzracunatoMalopre = true;
+					document.getElementById("labelSve").value=0;
+				}
+				
+			}
+			
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			
+			
+			function KliknutoKoren()
+			{
+				//var labelSrednji = document.getElementById("labelSrednji").value;
+				var labelTrenutno = document.getElementById("labelTrenutno").value;
+				
+				
+				
+				if(proveriDaliJeZnak(labelTrenutno))
+				{
+					return;
+				}
+				
+				
+				
+				var znak = "";
+				var drugiBroj = "";
+				
+				znak = labelTrenutno.slice(0,1);
+				drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				
+				
+				
+				
+				
+				if(drugiBroj == "")
+				{
+					drugiBroj = labelTrenutno;
+				}
+				
+				if(znak == "=")
+				{
+					znak = "";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+					document.getElementById("labelSrednji").value = 0;
+					document.getElementById("labelSrednji").style.visibility="hidden";
+					document.getElementById("labelSve").style.visibility="visible";
+				}
+				else if(znak == "+")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				
+				else if(znak == "-")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else if(znak == "x")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else if(znak == "/")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else
+				{
+					znak = "";
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno;
+				}
+						
+					
+					
+				
+				
+				rezultat = Math.sqrt(drugiBroj);
+				
+				
+				
+				document.getElementById("labelTrenutno").value = znak + " " + parseFloat(rezultat);
+				document.getElementById("labelSve").value = "koren od "+ drugiBroj + " = "+ rezultat ;
+				document.getElementById("labelTrenutno").style.backgroundColor="rgba(0,255,0,0.3)";
+				document.getElementById("labelSve").style.backgroundColor="rgba(20,120,220,0.2)";
+				
+				rezultat=0;
+				
+			}
+			
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			
+			
+			function KliknutoKvadrat()
+			{
+				var labelTrenutno = document.getElementById("labelTrenutno").value;
+				
+				if(proveriDaliJeZnak(labelTrenutno))
+				{
+					return;
+				}
+				
+				
+				
+				var znak = "";
+				var drugiBroj = "";
+				
+				znak = labelTrenutno.slice(0,1);
+				drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				
+				
+				
+				
+				
+				if(drugiBroj == "")
+				{
+					drugiBroj = labelTrenutno;
+				}
+				
+				if(znak == "=")
+				{
+					znak = "";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+					document.getElementById("labelSrednji").value = 0;
+					document.getElementById("labelSrednji").style.visibility="hidden";
+					document.getElementById("labelSve").style.visibility="visible";
+				}
+				else if(znak == "+")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				
+				else if(znak == "-")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else if(znak == "x")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else if(znak == "/")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else
+				{
+					znak = "";
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno;
+				}
+						
+					
+					
+				
+				
+				
+				rezultat = Math.pow(drugiBroj,2);
+				
+				document.getElementById("labelTrenutno").value = znak + " " + rezultat;
+				//document.getElementById("labelSrednji").value = drugiBroj +" na kvadrat";
+				document.getElementById("labelTrenutno").style.backgroundColor="rgba(0,255,0,0.3)";
+				//document.getElementById("labelSrednji").style.backgroundColor="rgba(225,20,20,0.3)";
+				document.getElementById("labelSve").value = drugiBroj +" na kvadrat = " + rezultat;
+				rezultat=0;
+			}
+			
+			
+			
+			
+			//---------------------------------------------------------------
+			
+			
+			
+			
+			function KliknutoKub()
+			{
+				var labelTrenutno = document.getElementById("labelTrenutno").value;
+				
+				if(proveriDaliJeZnak(labelTrenutno))
+				{
+					return;
+				}
+				
+				
+				var znak = "";
+				var drugiBroj = "";
+				
+				znak = labelTrenutno.slice(0,1);
+				drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				
+				
+				
+				
+				
+				if(drugiBroj == "")
+				{
+					drugiBroj = labelTrenutno;
+				}
+				
+				if(znak == "=")
+				{
+					znak = "";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+					document.getElementById("labelSrednji").value = 0;
+					document.getElementById("labelSrednji").style.visibility="hidden";
+					document.getElementById("labelSve").style.visibility="visible";
+				}
+				else if(znak == "+")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				
+				else if(znak == "-")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else if(znak == "x")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else if(znak == "/")
+				{
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno.slice(1,labelTrenutno.length);
+				}
+				else
+				{
+					znak = "";
+					document.getElementById("labelSve").style.visibility="visible";
+					drugiBroj = labelTrenutno;
+				}
+						
+					
+					
+				
+				
+				
+				rezultat = Math.pow(drugiBroj,3);
+				
+				document.getElementById("labelTrenutno").value = znak + " " + rezultat;
+				document.getElementById("labelTrenutno").style.backgroundColor="rgba(0,255,0,0.3)";
+				document.getElementById("labelSve").value = drugiBroj +" na kub = " + rezultat;
+				rezultat=0;
+			}
+			
+			
+			
+		</script>
+	</body>
+</html>

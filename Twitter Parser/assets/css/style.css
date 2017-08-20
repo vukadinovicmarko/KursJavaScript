@@ -1,0 +1,89 @@
+body
+{
+	background-image:url(../images/background03.png);
+	font-family:Verdana;
+}
+
+h1
+{
+	font-size:30px;
+	color:white;
+}
+
+
+#sadrzaj, #sadrzaj a
+{
+	width:600px;
+	margin:0 auto;
+	text-decoration:none;
+	text-align:center;
+}
+
+#tabela, #tabelaPrikaz
+{
+	margin-top:10px;
+	padding:30px 10px 10px 10px;
+	text-align:center;
+	width:100%;
+	border:1px solid black;
+	background-image:url(../images/background05.png);
+}
+#tabela th
+{
+	background-color:rgba(0,120,40,0.1);
+	padding-top:20px;
+	padding-bottom:20px;
+	font-size:14px;
+	border:1px solid black;
+	box-shadow:0px -5px 10px black;
+	
+}
+#tabela td
+{
+	padding:20px 0px 20px 0px;
+	font-size:14px;
+}
+
+#tabelaPrikaz
+{
+	padding:30px 10px 30px 10px;
+	text-align:left;
+	visibility:hidden;
+}
+#tabelaPrikaz th
+{
+	background-color:rgba(140,40,0,0.1);
+	padding-top:20px;
+	padding-bottom:20px;
+	font-size:14px;
+	border:1px solid black;
+	box-shadow:0px -5px 10px black;
+}
+
+#tabelaPrikaz td
+{
+	font-size:14px;
+}
+
+
+#taUnosTeksta
+{
+	border:1px solid black;
+	box-shadow:0px 5px 10px black;
+	resize:none;
+	padding:10px;
+}
+
+.tdTextArea
+{
+	
+	width:100%;
+}
+.pedeset
+{
+	width:50%;
+}
+.prikazTeksta
+{
+	margin-top:130px;
+}
